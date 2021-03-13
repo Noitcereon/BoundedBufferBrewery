@@ -134,7 +134,7 @@ namespace BoundedBufferLib
                 Task packing = Task.Run(async () =>
                 {
                     // Wait for 24 bottles
-                    if (_cappedBottles.Count >= 24)
+                    if (_cappedBottles.Count >= 24 && _boxPackerLimit.CurrentCount > 0)
                     {
                         Reporter.ReportAction($"Capped bottles: {_cappedBottles.Count}");
                         await _boxPackerLimit.WaitAsync();
